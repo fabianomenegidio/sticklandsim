@@ -1,104 +1,104 @@
 # SticklandSim
 
-**SticklandSim** é uma ferramenta de simulação baseada em Python, projetada para modelar a produção de ATP e a dinâmica de mutação usando pares de Stickland em vários cenários ambientais e evolutivos. A ferramenta permite que os usuários explorem como diferentes taxas de mutação, pressões seletivas e mudanças ambientais impactam a aptidão da população e a produção de ATP ao longo das gerações.
+**SticklandSim** is a Python-based simulation tool designed to model ATP production and mutation dynamics using Stickland pairs in various environmental and evolutionary scenarios. The tool allows users to explore how different mutation rates, selection pressures, and environmental changes impact the population’s fitness and ATP production over generations.
 
-## Índice
+## Table of Contents
 
-- [Recursos](#recursos)
-- [Instalação](#instalação)
-  - [Usando pip](#usando-pip)
-  - [Usando Conda](#usando-conda)
-  - [Usando Docker](#usando-docker)
-- [Uso](#uso)
-  - [Argumentos da Linha de Comando](#argumentos-da-linha-de-comando)
-  - [Arquivos de Configuração](#arquivos-de-configuração)
-  - [Exemplos](#exemplos)
-- [Cenários de Simulação](#cenários-de-simulação)
-  - [Cenários Disponíveis](#cenários-disponíveis)
-- [Suporte a Docker](#suporte-a-docker)
-- [Contribuindo](#contribuindo)
-- [Licença](#licença)
-
----
-
-## Recursos
-
-- **Simulações Personalizáveis**: Defina taxas de mutação, eficiência de produção de ATP, thresholds de aptidão e mais.
-- **Cenários Predefinidos**: Escolha entre diversos cenários pré-configurados ou crie o seu próprio.
-- **Ajuste Dinâmico de Parâmetros**: Use machine learning para otimizar parâmetros durante a simulação.
-- **Suporte a Checkpoints**: Retome simulações longas a partir de checkpoints salvos.
-- **Vários Formatos de Saída**: Gere relatórios em PDF, CSV, XLSX e JSON.
-- **Execução Paralela**: Execute múltiplas simulações simultaneamente para grandes conjuntos de dados.
+- [Features](#features)
+- [Installation](#installation)
+  - [Using pip](#using-pip)
+  - [Using Conda](#using-conda)
+  - [Using Docker](#using-docker)
+- [Usage](#usage)
+  - [Command-Line Arguments](#command-line-arguments)
+  - [Configuration Files](#configuration-files)
+  - [Examples](#examples)
+- [Simulation Scenarios](#simulation-scenarios)
+  - [Available Scenarios](#available-scenarios)
+- [Docker Support](#docker-support)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## Instalação
+## Features
 
-Você pode instalar **SticklandSim** via pip, Conda ou usar a imagem Docker fornecida.
+- **Customizable Simulations**: Define mutation rates, ATP production efficiency, fitness thresholds, and more.
+- **Predefined Scenarios**: Choose from several pre-built scenarios or create your own.
+- **Dynamic Parameter Adjustment**: Use machine learning to optimize parameters during the simulation.
+- **Support for Checkpoints**: Resume long simulations from checkpoints.
+- **Multiple Output Formats**: Generate reports in PDF, CSV, XLSX, and JSON formats.
+- **Parallel Execution**: Run multiple simulations simultaneously for larger datasets.
 
-### Usando pip
+---
 
-1. Clone o repositório:
+## Installation
+
+You can install **SticklandSim** via pip, Conda, or use the provided Docker image.
+
+### Using pip
+
+1. Clone the repository:
    \`\`\`bash
    git clone https://github.com/yourusername/sticklandsim.git
    cd sticklandsim
    \`\`\`
 
-2. Instale os pacotes Python necessários:
+2. Install the required Python packages:
    \`\`\`bash
    pip install -r requirements.txt
    \`\`\`
 
-### Usando Conda
+### Using Conda
 
-1. Crie um ambiente Conda e instale as dependências:
+1. Create a Conda environment and install the dependencies:
    \`\`\`bash
    conda create --name sticklandsim python=3.10
    conda activate sticklandsim
    conda install --file requirements.txt
    \`\`\`
 
-### Usando Docker
+### Using Docker
 
-1. Construa a imagem Docker:
+1. Build the Docker image:
    \`\`\`bash
    docker build -t sticklandsim:latest .
    \`\`\`
 
-2. Execute a ferramenta dentro de um contêiner Docker:
+2. Run the tool inside a Docker container:
    \`\`\`bash
    docker run --rm -v \$(pwd)/configs:/app/configs -v \$(pwd)/results:/app/results sticklandsim:latest --config configs/scenario1.json --output results/output.pdf
    \`\`\`
 
 ---
 
-## Uso
+## Usage
 
-Depois de instalado, **SticklandSim** pode ser usado através da linha de comando. Você pode passar arquivos de configuração, selecionar cenários predefinidos e gerar relatórios em diferentes formatos.
+Once installed, **SticklandSim** can be used through the command line. You can pass in configuration files, select predefined scenarios, and generate reports in different formats.
 
-### Argumentos da Linha de Comando
+### Command-Line Arguments
 
 \`\`\`bash
 python sticklandsim.py --help
 \`\`\`
 
-As principais opções são:
+The main options are:
 
-- \`--config\`: Caminho para um ou mais arquivos de configuração JSON que definem os cenários de simulação.
-- \`--template\`: Escolha entre templates predefinidos, como \`high_mutation\`, \`high_selection\`, etc.
-- \`--output\`: Nome base para o relatório de saída (padrão é \`simulation_output\`).
-- \`--format\`: Especifique o formato de saída: \`pdf\`, \`csv\`, \`xlsx\`, \`json\`.
-- \`--parallel\`: Execute múltiplas simulações em paralelo (se múltiplos cenários forem fornecidos).
-- \`--workers\`: Número de trabalhadores paralelos (padrão é o número de CPUs disponíveis).
-- \`--checkpoint-interval\`: Número de gerações após as quais um checkpoint será salvo.
-- \`--resume-from\`: Caminho para um arquivo de checkpoint para retomar uma simulação anterior.
-- \`--ml\`: Ative o ajuste dinâmico de parâmetros usando machine learning.
+- \`--config\`: Path to one or more JSON configuration files that define the simulation scenarios.
+- \`--template\`: Choose from predefined templates such as \`high_mutation\`, \`high_selection\`, etc.
+- \`--output\`: Base name for the output report (default is \`simulation_output\`).
+- \`--format\`: Specify the output format: \`pdf\`, \`csv\`, \`xlsx\`, \`json\`.
+- \`--parallel\`: Run multiple simulations in parallel (if multiple scenarios are provided).
+- \`--workers\`: Number of parallel workers (defaults to the number of available CPUs).
+- \`--checkpoint-interval\`: Number of generations after which a checkpoint is saved.
+- \`--resume-from\`: Path to a checkpoint file to resume a previous simulation.
+- \`--ml\`: Enable dynamic parameter adjustment using machine learning.
 
 ---
 
-### Arquivos de Configuração
+### Configuration Files
 
-Os arquivos de configuração são arquivos JSON que definem os parâmetros para um cenário de simulação. Abaixo está um exemplo:
+Configuration files are JSON files that define the parameters for a simulation scenario. Below is an example:
 
 \`\`\`json
 {
@@ -131,21 +131,21 @@ Os arquivos de configuração são arquivos JSON que definem os parâmetros para
 }
 \`\`\`
 
-### Exemplos
+### Examples
 
-#### Executando uma Simulação Padrão
+#### Running a Standard Simulation
 
 \`\`\`bash
 python sticklandsim.py --config configs/scenario1_standard_mutation.json --output results/standard_simulation.pdf
 \`\`\`
 
-#### Executando uma Simulação de Alta Mutação
+#### Running a High Mutation Simulation
 
 \`\`\`bash
 python sticklandsim.py --config configs/scenario2_high_mutation.json --output results/high_mutation_output.csv --format csv
 \`\`\`
 
-#### Executando uma Simulação com Otimizações de Machine Learning
+#### Running a Simulation with Machine Learning Optimizations
 
 \`\`\`bash
 python sticklandsim.py --config configs/scenario3_high_selection.json --ml --output results/high_selection_optimized.pdf
@@ -153,50 +153,62 @@ python sticklandsim.py --config configs/scenario3_high_selection.json --ml --out
 
 ---
 
-## Cenários de Simulação
+## Simulation Scenarios
 
-### Cenários Disponíveis
+### Available Scenarios
 
-A ferramenta fornece diversos cenários de simulação pré-definidos, cada um com suas características exclusivas.
+The tool provides several predefined simulation scenarios, each with its own unique characteristics.
 
-| Nome do Cenário                          | Nome do Arquivo                              | Resumo                                             |
-|------------------------------------------|----------------------------------------------|----------------------------------------------------|
-| Standard Mutation and ATP Production     | \`scenario1_standard_mutation.json\`           | Simulação básica com taxa de mutação moderada.      |
-| High Mutation Rate Simulation            | \`scenario2_high_mutation.json\`               | Mutações frequentes com adaptação mais rápida.      |
-| High Selection Pressure Simulation       | \`scenario3_high_selection.json\`              | Threshold de seleção elevado, simulando alta pressão.|
-| Frequent Environmental Changes           | \`scenario4_frequent_environmental_changes.json\`| Mudanças ambientais rápidas ao longo da simulação. |
-| Custom Scenario                          | \`scenario5_custom_simulation.json\`           | Cenário personalizável com parâmetros ajustáveis.   |
-| Low Mutation Rate Simulation             | \`scenario6_low_mutation.json\`                | Taxa de mutação muito baixa, ritmo evolutivo lento. |
-| High Environmental Variability           | \`scenario7_high_environmental_variability.json\`| Alta variação ambiental que afeta a produção de ATP.|
-| Extreme Environmental Stress             | \`scenario8_extreme_environmental_stress.json\` | Condições estressantes e desafios de sobrevivência. |
-| Adaptive Mutation Rate                   | \`scenario9_adaptive_mutation.json\`           | Taxas de mutação dinâmicas em resposta às mudanças ambientais. |
-| Stable Environment with High ATP         | \`scenario10_stable_high_atp.json\`            | Ambiente estável com alta produção de ATP.          |
-| Gradual Mutation Increase                | \`scenario11_gradual_mutation_increase.json\`  | Aumento gradual da taxa de mutação ao longo do tempo.|
+| Scenario Name                           | File Name                               | Summary                                            |
+|-----------------------------------------|-----------------------------------------|----------------------------------------------------|
+| Standard Mutation and ATP Production    | \`scenario1_standard_mutation.json\`      | Basic simulation with moderate mutation rate.       |
+| High Mutation Rate Simulation           | \`scenario2_high_mutation.json\`          | Frequent mutations with faster adaptation.          |
+| High Selection Pressure Simulation      | \`scenario3_high_selection.json\`         | High selection threshold, simulating strong pressure.|
+| Frequent Environmental Changes          | \`scenario4_frequent_environmental_changes.json\` | Rapid environmental changes throughout the simulation. |
+| Custom Scenario                         | \`scenario5_custom_simulation.json\`      | A customizable scenario with adjustable parameters. |
+| Low Mutation Rate Simulation            | \`scenario6_low_mutation.json\`           | Very low mutation rate, slow evolutionary pace.     |
+| High Environmental Variability          | \`scenario7_high_environmental_variability.json\` | High environmental fluctuations affecting ATP production. |
+| Extreme Environmental Stress            | \`scenario8_extreme_environmental_stress.json\` | Stressful conditions and survival challenges.       |
+| Adaptive Mutation Rate                  | \`scenario9_adaptive_mutation.json\`      | Dynamic mutation rates responding to environmental changes. |
+| Stable Environment with High ATP        | \`scenario10_stable_high_atp.json\`       | A stable environment with high ATP production.      |
+| Gradual Mutation Increase               | \`scenario11_gradual_mutation_increase.json\` | Gradual increase in mutation rate over time.       |
 
 ---
 
-## Suporte a Docker
+## Docker Support
 
-**SticklandSim** pode ser executado dentro de um contêiner Docker. Isso permite um ambiente consistente, independentemente da configuração da máquina host.
+**SticklandSim** can be run inside a Docker container. This allows for a consistent environment regardless of the host machine’s setup.
 
-### Construindo a Imagem Docker
+### Building the Docker Image
 
 \`\`\`bash
 docker build -t sticklandsim:latest .
 \`\`\`
 
-### Executando uma Simulação com Docker
+### Running a Simulation with Docker
 
 \`\`\`bash
 docker run --rm -v \$(pwd)/configs:/app/configs -v \$(pwd)/results:/app/results sticklandsim:latest --config configs/scenario1_standard_mutation.json --output results/standard_simulation.pdf
 \`\`\`
 
-### Build Multi-stage (Otimização)
+### Multi-stage Build (Optimization)
 
-O Dockerfile usa um processo de build multi-stage para garantir que a imagem final seja o mais leve possível, contendo apenas as dependências necessárias em tempo de execução.
+The Dockerfile uses a multi-stage build process to ensure that the final image is as lightweight as possible, containing only the necessary runtime dependencies.
 
 ---
 
-## Contribuindo
+## Contributing
 
-Contribuições
+We welcome contributions to improve the tool! Here's how you can get involved:
+
+1. Fork the repository.
+2. Create a new branch (\`git checkout -b feature-branch\`).
+3. Make your changes and commit them (\`git commit -m "Add feature"\`).
+4. Push to the branch (\`git push origin feature-branch\`).
+5. Open a pull request.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
